@@ -9,26 +9,31 @@ import androidx.compose.runtime.Composable
 private val DarkColorPalette = darkColors(
     primary = Purple200,
     primaryVariant = Purple700,
-    secondary = Teal200
+    onPrimary = White,
+    secondary = Teal200,
+    secondaryVariant = Teal200,
+    onSecondary = Black,
+    surface = Black,
+    onSurface = White,
+    background = Black,
+    onBackground = White,
 )
 
 private val LightColorPalette = lightColors(
     primary = Purple500,
     primaryVariant = Purple700,
-    secondary = Teal200
-
-    /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
+    onPrimary = White,
+    secondary = Teal200,
+    secondaryVariant = Teal700,
+    onSecondary = Black,
+    surface = White,
+    onSurface = Black,
+    background = White,
+    onBackground = Black,
 )
 
 @Composable
-fun ComposebitcoinTheme(
+fun ComposeBitcoinTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
