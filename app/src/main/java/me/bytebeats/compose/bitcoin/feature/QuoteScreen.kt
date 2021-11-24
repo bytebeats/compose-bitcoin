@@ -109,7 +109,9 @@ fun QuoteScreen(quoteViewModel: QuoteViewModel = hiltViewModel()) {
         }
     }
 
-    LaunchedEffect(key1 = Unit, block = { quoteViewModel.fetchQuoteDetail(QuoteTimeSpan.MONTH) })
+    LaunchedEffect(
+        key1 = Unit,
+        block = { quoteViewModel.fetchQuoteDetail(QuoteTimeSpan.MONTH) })
 }
 
 @Preview(showBackground = true, showSystemUi = true)
