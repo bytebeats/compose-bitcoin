@@ -2,8 +2,8 @@ package me.bytebeats.compose.bitcoin.repository.impl
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
-import me.bytebeats.compose.bitcoin.di.IoDispatcher
 import me.bytebeats.compose.bitcoin.model.QuotePriceChartResponse
+import me.bytebeats.compose.bitcoin.qualifier.IoDispatcher
 import me.bytebeats.compose.bitcoin.repository.QuoteRepository
 import me.bytebeats.compose.bitcoin.source.QuoteRemoteDataSource
 import javax.inject.Inject

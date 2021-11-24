@@ -17,7 +17,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import me.bytebeats.compose.bitcoin.R
-import me.bytebeats.compose.bitcoin.navigation.Screen
+import me.bytebeats.compose.bitcoin.navigation.BitcoinRoute
 import me.bytebeats.compose.bitcoin.ui.theme.ComposeBitcoinTheme
 
 /**
@@ -48,7 +48,7 @@ fun SplashScreen(
                 animationSpec = tween(alphaAnimationDurationMillis),
                 finishedListener = {
                     navController?.popBackStack()
-                    navController?.navigate(Screen.Quote.route)
+                    navController?.navigate(BitcoinRoute.Quote.value)
                 },
             )
             Image(

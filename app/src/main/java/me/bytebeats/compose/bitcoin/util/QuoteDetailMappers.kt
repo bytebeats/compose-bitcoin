@@ -3,9 +3,8 @@ package me.bytebeats.compose.bitcoin.util
 import com.github.mikephil.charting.data.Entry
 import me.bytebeats.compose.bitcoin.enums.QuotePriceChangeStatus
 import me.bytebeats.compose.bitcoin.enums.QuoteTimeSpan
-import me.bytebeats.compose.bitcoin.model.QuoteDetail
-import me.bytebeats.compose.bitcoin.model.QuotePriceChartResponse
-import me.bytebeats.compose.bitcoin.model.QuoteTimePriceItem
+import me.bytebeats.compose.bitcoin.enums.RollingAverageSpan
+import me.bytebeats.compose.bitcoin.model.*
 import me.bytebeats.compose.bitcoin.util.ktx.changeRateOf
 import me.bytebeats.compose.bitcoin.util.ktx.orZero
 import me.bytebeats.compose.bitcoin.util.ktx.toCurrency
@@ -45,3 +44,26 @@ internal fun convertToEntry(item: QuoteTimePriceItem): Entry =
 
 internal fun changeStatus(price: Double, baseline: Double): QuotePriceChangeStatus =
     if (price >= baseline) QuotePriceChangeStatus.POSITIVE else QuotePriceChangeStatus.NEGATIVE
+
+internal fun convertToEntry(item: StatsItem): Entry =
+    Entry(item.timestamp.toFloat(), item.transactionsPerSecond.toFloat())
+
+internal fun convertToStatsDetail(
+    response: StatsResponse,
+    timeSpan: QuoteTimeSpan,
+    rollingAverageSpan: RollingAverageSpan
+): StatsDetail {
+    val transactions = response.values.map { it.transactionsPerSecond }
+    val maxTransaction = transactions.maxOrNull().orZero()
+
+    return StatsDetail(
+        title = response.name,
+        unit = response.unit,
+        period = response.period,
+        aboutChart = response.description,
+        maxTransaction = maxTransaction,
+        timeSpan = timeSpan,
+        rollingAverageSpan = rollingAverageSpan,
+        transactionsEntries = response.values.map { convertToEntry(it) }
+    )
+}

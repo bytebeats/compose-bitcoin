@@ -1,5 +1,5 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-    <string name="app_name">compose-bitcoin</string>
+    <string name="app_name">Bitcoin Quote</string>
     <string name="bitcoin_btc">Bitcoin (BTC)</string>
     <string name="high">High</string>
     <string name="open">Open</string>
@@ -19,4 +19,6 @@
     <string name="short_sixty_days">60d</string>
     <string name="short_ninety_days">90d</string>
     <string name="short_one_year">1y</string>
+    <string name="popular_stats">Popular Stats</string>
+    <string name="stats">Stats</string>
 </resources>

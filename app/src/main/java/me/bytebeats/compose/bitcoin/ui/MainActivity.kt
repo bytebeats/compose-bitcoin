@@ -1,4 +1,4 @@
-package me.bytebeats.compose.bitcoin
+package me.bytebeats.compose.bitcoin.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

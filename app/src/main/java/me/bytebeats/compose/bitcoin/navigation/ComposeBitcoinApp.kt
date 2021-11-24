@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import me.bytebeats.compose.bitcoin.feature.QuoteScreen
 import me.bytebeats.compose.bitcoin.feature.SplashScreen
+import me.bytebeats.compose.bitcoin.feature.StatsScreen
 
 /**
  * Created by bytebeats on 2021/11/23 : 19:25
@@ -16,12 +17,15 @@ import me.bytebeats.compose.bitcoin.feature.SplashScreen
 @Composable
 fun ComposeBitcoinApp() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Screen.Splash.route) {
-        composable(route = Screen.Splash.route) {
+    NavHost(navController = navController, startDestination = BitcoinRoute.Splash.value) {
+        composable(route = BitcoinRoute.Splash.value) {
             SplashScreen(navController = navController)
         }
-        composable(route = Screen.Quote.route) {
-            QuoteScreen()
+        composable(route = BitcoinRoute.Quote.value) {
+            QuoteScreen(navController = navController)
+        }
+        composable(route = BitcoinRoute.Stats.value) {
+            StatsScreen(navController = navController)
         }
     }
 }

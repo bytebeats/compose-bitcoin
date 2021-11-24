@@ -5,7 +5,8 @@ package me.bytebeats.compose.bitcoin.navigation
  * E-mail: happychinapc@gmail.com
  * Quote: Peasant. Educated. Worker
  */
-sealed class Screen(val route: String) {
-    object Splash : Screen("Screen")
-    object Quote : Screen("Quote")
+sealed class BitcoinRoute(val value: String) {
+    object Splash : BitcoinRoute("Screen")
+    object Quote : BitcoinRoute("Quote")
+    object Stats : BitcoinRoute("Stats")
 }

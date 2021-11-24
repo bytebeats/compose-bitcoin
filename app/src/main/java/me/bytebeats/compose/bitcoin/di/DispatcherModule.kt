@@ -6,24 +6,15 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
-import javax.inject.Qualifier
+import me.bytebeats.compose.bitcoin.qualifier.DefaultDispatcher
+import me.bytebeats.compose.bitcoin.qualifier.IoDispatcher
+import me.bytebeats.compose.bitcoin.qualifier.MainDispatcher
 
 /**
  * Created by bytebeats on 2021/11/23 : 17:45
  * E-mail: happychinapc@gmail.com
  * Quote: Peasant. Educated. Worker
  */
-@Retention(AnnotationRetention.BINARY)
-@Qualifier
-annotation class DefaultDispatcher
-
-@Retention(AnnotationRetention.BINARY)
-@Qualifier
-annotation class IoDispatcher
-
-@Retention(AnnotationRetention.BINARY)
-@Qualifier
-annotation class MainDispatcher
 
 @Module
 @InstallIn(SingletonComponent::class)

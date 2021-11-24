@@ -8,11 +8,12 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
-import me.bytebeats.compose.bitcoin.domain.QuoteDetailUserCase
+import me.bytebeats.compose.bitcoin.domain.StatsDetailUserCase
 import me.bytebeats.compose.bitcoin.enums.QuoteTimeSpan
+import me.bytebeats.compose.bitcoin.enums.RollingAverageSpan
 import me.bytebeats.compose.bitcoin.network.NetworkState
 import me.bytebeats.compose.bitcoin.util.APP_TAG
-import me.bytebeats.compose.bitcoin.viewstate.QuoteViewState
+import me.bytebeats.compose.bitcoin.viewstate.StatsViewState
 import javax.inject.Inject
 
 /**
@@ -22,26 +23,26 @@ import javax.inject.Inject
  */
 
 @HiltViewModel
-class QuoteViewModel @Inject constructor(
-    private val quoteDetailUserCase: QuoteDetailUserCase
+class StatsViewModel @Inject constructor(
+    private val statsDetailUserCase: StatsDetailUserCase
 ) : ViewModel() {
-    private val _networkState = mutableStateOf<NetworkState<QuoteViewState>>(NetworkState.Loading)
+    private val _networkState = mutableStateOf<NetworkState<StatsViewState>>(NetworkState.Loading)
 
-    val networkState: State<NetworkState<QuoteViewState>>
+    val networkStats: State<NetworkState<StatsViewState>>
         get() = _networkState
 
     private val ceHandler = CoroutineExceptionHandler { _, throwable ->
         Log.i(APP_TAG, null, throwable)
     }
 
-    fun fetchQuoteDetail(timeSpan: QuoteTimeSpan) {
+    fun fetchStatsDetail(timeSpan: QuoteTimeSpan, rollingAverageSpan: RollingAverageSpan) {
         viewModelScope.launch(ceHandler) {
             _networkState.value = NetworkState.Loading
             try {
                 _networkState.value = NetworkState.Success(
-                    QuoteViewState(
-                        quoteDetail = quoteDetailUserCase.quoteDetail(
-                            timeSpan
+                    StatsViewState(
+                        statsDetail = statsDetailUserCase.statsDetail(
+                            timeSpan, rollingAverageSpan
                         )
                     )
                 )
