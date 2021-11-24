@@ -15,7 +15,7 @@ import me.bytebeats.compose.bitcoin.util.ktx.getCompatDrawable
  * E-mail: happychinapc@gmail.com
  * Quote: Peasant. Educated. Worker
  */
-class QuoteViewState(private val quoteDetail: QuoteDetail) {
+class QuoteViewState(val quoteDetail: QuoteDetail) {
     fun lineDataSet(context: Context): LineDataSet =
         LineDataSet(quoteDetail.chartEntries, "quote_price").apply {
             mode = LineDataSet.Mode.CUBIC_BEZIER
