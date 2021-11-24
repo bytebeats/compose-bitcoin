@@ -29,7 +29,7 @@ fun Double?.toCurrency(locale: Locale = Locale.US): String {
  * @param decimals
  * @return
  */
-fun Double.round(decimals: Int = 2): Double = "%.$decimals".format(Locale.US, this).toDouble()
+fun Double.round(decimals: Int = 2): Double = "%.${decimals}f".format(Locale.US, this).toDouble()
 
 fun Double.changeRateOf(number: Double): Double =
     (((number.minus(this)).div(this)).times(100)).round(2)

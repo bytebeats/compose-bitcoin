@@ -23,6 +23,7 @@ class ErrorViewState(private val error: Throwable) {
         is HttpException -> error.message.orEmpty()
         is SocketTimeoutException -> context.getString(R.string.timeout_error_message)
         is IOException -> context.getString(R.string.no_internet_connection)
-        else -> context.getString(R.string.something_went_wrong)
+//        else -> context.getString(R.string.something_went_wrong)
+        else -> error.stackTraceToString()
     }
 }

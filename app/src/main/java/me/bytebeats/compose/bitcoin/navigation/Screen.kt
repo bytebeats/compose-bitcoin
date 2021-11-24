@@ -7,5 +7,5 @@ package me.bytebeats.compose.bitcoin.navigation
  */
 sealed class Screen(val route: String) {
     object Splash : Screen("Screen")
-    object Market : Screen("Market")
+    object Quote : Screen("Quote")
 }

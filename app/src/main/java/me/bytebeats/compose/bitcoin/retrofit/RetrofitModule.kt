@@ -1,9 +1,12 @@
 package me.bytebeats.compose.bitcoin.retrofit
 
+import android.util.Log
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import me.bytebeats.compose.bitcoin.util.APP_TAG
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -44,12 +47,18 @@ object RetrofitModule {
     @Singleton
     @Provides
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BASIC }
+        return HttpLoggingInterceptor { message -> Log.i(APP_TAG, message) }.apply {
+            level = HttpLoggingInterceptor.Level.BASIC
+        }
     }
 
     @Singleton
     @Provides
-    fun provideMoshiConverterFactory(): MoshiConverterFactory {
-        return MoshiConverterFactory.create()
+    fun provideMoshiConverterFactory(moshi: Moshi): MoshiConverterFactory {
+        return MoshiConverterFactory.create(moshi)
     }
+
+    @Singleton
+    @Provides
+    fun provideMoshi(): Moshi = Moshi.Builder().build()
 }

@@ -4,7 +4,9 @@ import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -35,8 +37,9 @@ import java.io.IOException
 fun ErrorScreen(
     modifier: Modifier = Modifier,
     errorViewState: ErrorViewState,
-    onTryAgain: () -> Unit
+    onTryAgain: (() -> Unit)? = null
 ) {
+    val scrollState = rememberScrollState()
     Surface(modifier = modifier) {
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -49,14 +52,22 @@ fun ErrorScreen(
                     LocalContext.current
                 ),
             )
-            Text(
-                modifier = Modifier.padding(top = 16.dp),
-                text = errorViewState.errorMessage(LocalContext.current),
-                style = MaterialTheme.typography.body1,
-                color = Gray700,
-            )
+            Column(
+                modifier = Modifier
+                    .verticalScroll(scrollState)
+                    .fillMaxWidth()
+                    .heightIn(max = 100.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    modifier = Modifier.padding(top = 16.dp),
+                    text = errorViewState.errorMessage(LocalContext.current),
+                    style = MaterialTheme.typography.body1,
+                    color = Gray700,
+                )
+            }
             Button(
-                onClick = onTryAgain,
+                onClick = { onTryAgain?.invoke() },
                 modifier = Modifier
                     .width(250.dp)
                     .padding(top = 16.dp)
@@ -75,13 +86,11 @@ fun ErrorScreen(
     }
 }
 
-@Preview(showBackground = true)
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true, showSystemUi = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun ErrorScreenPreview() {
     ComposeBitcoinTheme {
-        ErrorScreen(errorViewState = ErrorViewState(IOException("Sorry, IOException!"))) {
-
-        }
+        ErrorScreen(errorViewState = ErrorViewState(IOException("Sorry, IOException!")))
     }
 }
