@@ -1,8 +1,6 @@
 package me.bytebeats.compose.bitcoin.feature
 
-import android.content.Context
 import android.content.res.Configuration
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -24,30 +22,14 @@ import me.bytebeats.compose.bitcoin.ui.theme.ComposeBitcoinTheme
 import me.bytebeats.compose.bitcoin.ui.theme.Gray700
 import me.bytebeats.compose.bitcoin.ui.theme.Gray900
 import me.bytebeats.compose.bitcoin.ui.theme.White
-import retrofit2.HttpException
+import me.bytebeats.compose.bitcoin.viewstate.ErrorViewState
 import java.io.IOException
-import java.net.SocketTimeoutException
 
 /**
  * Created by bytebeats on 2021/11/24 : 10:23
  * E-mail: happychinapc@gmail.com
  * Quote: Peasant. Educated. Worker
  */
-
-class ErrorViewState(private val error: Throwable) {
-    @DrawableRes
-    fun errorImage(): Int = when (error) {
-        is IOException -> R.drawable.ic_no_connection
-        else -> R.drawable.ic_error
-    }
-
-    fun errorMessage(context: Context): String = when (error) {
-        is HttpException -> error.message.orEmpty()
-        is SocketTimeoutException -> context.getString(R.string.timeout_error_message)
-        is IOException -> context.getString(R.string.no_internet_connection)
-        else -> context.getString(R.string.something_went_wrong)
-    }
-}
 
 @Composable
 fun ErrorScreen(

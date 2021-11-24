@@ -1,9 +1,9 @@
-package me.bytebeats.compose.bitcoin.usercase.impl
+package me.bytebeats.compose.bitcoin.domain.impl
 
+import me.bytebeats.compose.bitcoin.domain.QuoteDetailUserCase
 import me.bytebeats.compose.bitcoin.enums.QuoteTimeSpan
 import me.bytebeats.compose.bitcoin.model.QuoteDetail
 import me.bytebeats.compose.bitcoin.repository.QuoteRepository
-import me.bytebeats.compose.bitcoin.usercase.QuoteDetailUserCase
 import me.bytebeats.compose.bitcoin.util.convertToQuoteDetail
 
 /**

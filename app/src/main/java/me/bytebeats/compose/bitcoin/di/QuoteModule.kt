@@ -8,8 +8,8 @@ import dagger.hilt.android.components.ViewModelComponent
 import me.bytebeats.compose.bitcoin.repository.QuoteRepository
 import me.bytebeats.compose.bitcoin.repository.impl.QuoteRepositoryImpl
 import me.bytebeats.compose.bitcoin.service.QuoteService
-import me.bytebeats.compose.bitcoin.usercase.QuoteDetailUserCase
-import me.bytebeats.compose.bitcoin.usercase.impl.QuoteDetailUserCaseImpl
+import me.bytebeats.compose.bitcoin.domain.QuoteDetailUserCase
+import me.bytebeats.compose.bitcoin.domain.impl.QuoteDetailUserCaseImpl
 import retrofit2.Retrofit
 
 /**

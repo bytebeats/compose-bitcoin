@@ -1,4 +1,4 @@
-package me.bytebeats.compose.bitcoin.usercase
+package me.bytebeats.compose.bitcoin.domain
 
 import me.bytebeats.compose.bitcoin.enums.QuoteTimeSpan
 import me.bytebeats.compose.bitcoin.model.QuoteDetail
