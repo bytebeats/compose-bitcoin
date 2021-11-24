@@ -1,4 +1,4 @@
-package me.bytebeats.compose.bitcoin.ktx
+package me.bytebeats.compose.bitcoin.util.ktx
 
 import java.text.NumberFormat
 import java.util.*

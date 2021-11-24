@@ -1,4 +1,4 @@
-package me.bytebeats.compose.bitcoin.ktx
+package me.bytebeats.compose.bitcoin.util.ktx
 
 import android.content.res.Resources
 import android.view.View

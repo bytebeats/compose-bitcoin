@@ -1,4 +1,4 @@
-package me.bytebeats.compose.bitcoin.ktx
+package me.bytebeats.compose.bitcoin.util.ktx
 
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.LineData

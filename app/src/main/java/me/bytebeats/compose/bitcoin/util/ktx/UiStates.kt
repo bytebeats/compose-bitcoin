@@ -1,4 +1,4 @@
-package me.bytebeats.compose.bitcoin.ktx
+package me.bytebeats.compose.bitcoin.util.ktx
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.transform
