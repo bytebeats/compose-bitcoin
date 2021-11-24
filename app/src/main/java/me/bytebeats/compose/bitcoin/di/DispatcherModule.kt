@@ -3,11 +3,10 @@ package me.bytebeats.compose.bitcoin.di
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
-import java.lang.annotation.RetentionPolicy
 import javax.inject.Qualifier
-import javax.inject.Singleton
 
 /**
  * Created by bytebeats on 2021/11/23 : 17:45
@@ -27,7 +26,7 @@ annotation class IoDispatcher
 annotation class MainDispatcher
 
 @Module
-@InstallIn(Singleton::class)
+@InstallIn(SingletonComponent::class)
 object DispatcherModule {
     @Provides
     @DefaultDispatcher

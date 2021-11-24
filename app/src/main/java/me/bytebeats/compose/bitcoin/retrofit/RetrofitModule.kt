@@ -3,6 +3,7 @@ package me.bytebeats.compose.bitcoin.retrofit
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,7 +17,7 @@ import javax.inject.Singleton
  */
 
 @Module
-@InstallIn(Singleton::class)
+@InstallIn(SingletonComponent::class)
 object RetrofitModule {
     private const val BLOCKCHAIN_BASE_URL = "https://api.blockchain.info/"
 
