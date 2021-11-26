@@ -28,7 +28,7 @@ class StatsViewModel @Inject constructor(
 ) : ViewModel() {
     private val _networkState = mutableStateOf<NetworkState<StatsViewState>>(NetworkState.Loading)
 
-    val networkStats: State<NetworkState<StatsViewState>>
+    val networkState: State<NetworkState<StatsViewState>>
         get() = _networkState
 
     private val ceHandler = CoroutineExceptionHandler { _, throwable ->
@@ -47,7 +47,7 @@ class StatsViewModel @Inject constructor(
                     )
                 )
             } catch (e: Exception) {
-                Log.i(APP_TAG, null, e)
+                Log.i(APP_TAG, e.stackTraceToString())
                 _networkState.value = NetworkState.Error(e)
             }
         }

@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable
 import com.github.mikephil.charting.data.LineDataSet
 import me.bytebeats.compose.bitcoin.R
 import me.bytebeats.compose.bitcoin.enums.QuotePriceChangeStatus
-import me.bytebeats.compose.bitcoin.enums.QuoteTimeSpan
 import me.bytebeats.compose.bitcoin.model.QuoteDetail
 import me.bytebeats.compose.bitcoin.util.ktx.getCompatColor
 import me.bytebeats.compose.bitcoin.util.ktx.getCompatDrawable
@@ -27,9 +26,6 @@ class QuoteViewState(val quoteDetail: QuoteDetail) {
             setDrawCircles(false)
         }
 
-    val timeSpan: QuoteTimeSpan
-        get() = quoteDetail.timeSpan
-
     fun isChangeStatusPositive(): Boolean =
         quoteDetail.changeStatus == QuotePriceChangeStatus.POSITIVE
 
@@ -43,6 +39,6 @@ class QuoteViewState(val quoteDetail: QuoteDetail) {
         context.getCompatDrawable(
             if (quoteDetail.changeStatus == QuotePriceChangeStatus.POSITIVE)
                 R.drawable.background_positive_chart
-            else R.drawable.ic_arraow_negative
+            else R.drawable.background_negative_chart
         )
 }

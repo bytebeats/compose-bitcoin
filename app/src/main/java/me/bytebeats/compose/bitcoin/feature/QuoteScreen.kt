@@ -58,7 +58,7 @@ private fun QuoteContentScreen(
             Surface {
                 SwipeRefresh(
                     state = swipeRefreshState,
-                    onRefresh = { quoteViewModel.fetchQuoteDetail(state.timeSpan) },
+                    onRefresh = { quoteViewModel.fetchQuoteDetail(state.quoteDetail.timeSpan) },
                     modifier = Modifier.fillMaxSize(),
                 ) {
                     Column(modifier = Modifier.verticalScroll(scrollState)) {
@@ -76,7 +76,7 @@ private fun QuoteContentScreen(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(start = 15.dp, top = 15.dp, end = 15.dp),
-                            selectedTimeSpan = state.timeSpan
+                            selectedTimeSpan = state.quoteDetail.timeSpan
                         ) { timeSpan ->
                             quoteViewModel.fetchQuoteDetail(timeSpan)
                         }
