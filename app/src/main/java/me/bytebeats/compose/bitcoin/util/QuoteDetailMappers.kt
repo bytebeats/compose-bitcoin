@@ -60,7 +60,7 @@ internal fun convertToStatsDetail(
         title = response.name,
         unit = response.unit,
         period = response.period,
-        aboutChart = response.description,
+        description = response.description,
         maxTransaction = maxTransaction,
         timeSpan = timeSpan,
         rollingAverageSpan = rollingAverageSpan,

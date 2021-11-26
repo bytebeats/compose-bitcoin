@@ -13,10 +13,35 @@ data class StatsDetail(
     val title: String,
     val unit: String,
     val period: String,
+    val description: String,
     val maxTransaction: Double,
-    val aboutChart: String,
     val timeSpan: QuoteTimeSpan,
     val rollingAverageSpan: RollingAverageSpan,
     val transactionsEntries: List<Entry>,
-)
+) {
+    val stats: Stats get() = Stats(title, unit, period, description)
+
+    val detail: Detail
+        get() = Detail(
+            maxTransaction,
+            timeSpan,
+            rollingAverageSpan,
+            transactionsEntries
+        )
+
+    data class Stats(
+        val title: String,
+        val unit: String,
+        val period: String,
+        val description: String,
+    )
+
+    data class Detail(
+        val maxTransaction: Double,
+        val timeSpan: QuoteTimeSpan,
+        val rollingAverageSpan: RollingAverageSpan,
+        val transactionsEntries: List<Entry>,
+    )
+}
+
 
