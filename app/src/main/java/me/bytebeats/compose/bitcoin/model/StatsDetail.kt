@@ -34,7 +34,9 @@ data class StatsDetail(
         val unit: String,
         val period: String,
         val description: String,
-    )
+    ) {
+        fun string(): String = "$title: $unit in $period"
+    }
 
     data class Detail(
         val maxTransaction: Double,

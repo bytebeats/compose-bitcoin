@@ -76,7 +76,7 @@ private fun QuoteContentScreen(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(start = 15.dp, top = 15.dp, end = 15.dp),
-                            selectedTimeSpan = state.quoteDetail.timeSpan
+                            selectedSpan = state.quoteDetail.timeSpan
                         ) { timeSpan ->
                             quoteViewModel.fetchQuoteDetail(timeSpan)
                         }

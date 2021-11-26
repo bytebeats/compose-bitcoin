@@ -35,7 +35,7 @@ private val rollingAverageMap = mapOf(
 fun RollingAverageTab(
     modifier: Modifier = Modifier,
     selectedSpan: RollingAverage = RollingAverage.EIGHT_HOURS,
-    onTimeSpanSelected: ((RollingAverage) -> Unit)? = null
+    onSpanSelected: ((RollingAverage) -> Unit)? = null
 ) {
     Row(modifier = modifier, horizontalArrangement = Arrangement.SpaceAround) {
         for (entry in rollingAverageMap) {
@@ -43,7 +43,7 @@ fun RollingAverageTab(
                 rollingAverage = stringResource(id = entry.key),
                 isSelected = selectedSpan == entry.value
             ) {
-                onTimeSpanSelected?.invoke(entry.value)
+                onSpanSelected?.invoke(entry.value)
             }
         }
     }
@@ -53,20 +53,21 @@ fun RollingAverageTab(
 internal fun RollingAverageChip(
     rollingAverage: String,
     isSelected: Boolean,
-    onTimeSpanSelected: (() -> Unit)? = null
+    onSpanSelected: (() -> Unit)? = null
 ) {
     Box(
         modifier = Modifier
             .background(
                 color = if (isSelected) MaterialTheme.colors.onBackground else MaterialTheme.colors.background,
-                shape = RoundedCornerShape(25.dp)
+                shape = RoundedCornerShape(10.dp)
             )
-            .clickable { onTimeSpanSelected?.invoke() },
+            .clickable { onSpanSelected?.invoke() },
     ) {
         Text(
             text = rollingAverage,
+            style = MaterialTheme.typography.subtitle1,
             color = if (isSelected) MaterialTheme.colors.background else MaterialTheme.colors.onBackground,
-            modifier = Modifier.padding(10.dp),
+            modifier = Modifier.padding(start = 10.dp, top = 5.dp, end = 10.dp, bottom = 5.dp),
         )
     }
 }

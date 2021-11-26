@@ -21,10 +21,7 @@ import androidx.navigation.NavController
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import me.bytebeats.compose.bitcoin.R
-import me.bytebeats.compose.bitcoin.component.AboutChart
-import me.bytebeats.compose.bitcoin.component.RollingAverageTab
-import me.bytebeats.compose.bitcoin.component.StatsChart
-import me.bytebeats.compose.bitcoin.component.TimeSpanTab
+import me.bytebeats.compose.bitcoin.component.*
 import me.bytebeats.compose.bitcoin.enums.QuoteTimeSpan
 import me.bytebeats.compose.bitcoin.enums.RollingAverage
 import me.bytebeats.compose.bitcoin.navigation.BitcoinRoute
@@ -95,10 +92,10 @@ private fun StatsContentScreen(statsViewModel: StatsViewModel = hiltViewModel())
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(start = 15.dp, top = 15.dp, end = 15.dp),
-                            selectedTimeSpan = state.statsDetail.timeSpan
-                        ) { timeSpan ->
+                            selectedSpan = state.statsDetail.timeSpan
+                        ) { span ->
                             statsViewModel.fetchStatsDetail(
-                                timeSpan,
+                                span,
                                 state.statsDetail.rollingAverage,
                             )
                         }
@@ -113,7 +110,13 @@ private fun StatsContentScreen(statsViewModel: StatsViewModel = hiltViewModel())
                                 span,
                             )
                         }
-                        StatsChart(
+                        TransactionHeader(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 5.dp, top = 10.dp, end = 5.dp),
+                            stats = state.statsDetail.stats,
+                        )
+                        TransactionChart(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(start = 5.dp, top = 10.dp, end = 5.dp),

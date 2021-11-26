@@ -33,16 +33,16 @@ private val timeSpanMap = mapOf(
 @Composable
 fun TimeSpanTab(
     modifier: Modifier = Modifier,
-    selectedTimeSpan: QuoteTimeSpan = QuoteTimeSpan.MONTH,
-    onTimeSpanSelected: ((QuoteTimeSpan) -> Unit)? = null
+    selectedSpan: QuoteTimeSpan = QuoteTimeSpan.MONTH,
+    onSpanSelected: ((QuoteTimeSpan) -> Unit)? = null
 ) {
     Row(modifier = modifier, horizontalArrangement = Arrangement.SpaceAround) {
         for (entry in timeSpanMap) {
             TimeSpanChip(
                 timeSpan = stringResource(id = entry.key),
-                isSelected = selectedTimeSpan == entry.value
+                isSelected = selectedSpan == entry.value
             ) {
-                onTimeSpanSelected?.invoke(entry.value)
+                onSpanSelected?.invoke(entry.value)
             }
         }
     }
@@ -58,14 +58,15 @@ internal fun TimeSpanChip(
         modifier = Modifier
             .background(
                 color = if (isSelected) MaterialTheme.colors.onBackground else MaterialTheme.colors.background,
-                shape = RoundedCornerShape(25.dp)
+                shape = RoundedCornerShape(10.dp)
             )
             .clickable { onTimeSpanSelected?.invoke() },
     ) {
         Text(
             text = timeSpan,
+            style = MaterialTheme.typography.subtitle1,
             color = if (isSelected) MaterialTheme.colors.background else MaterialTheme.colors.onBackground,
-            modifier = Modifier.padding(10.dp),
+            modifier = Modifier.padding(start = 10.dp, top = 5.dp, end = 10.dp, bottom = 5.dp),
         )
     }
 }
@@ -78,6 +79,6 @@ private fun TimeSpanTabPreview() {
         modifier = Modifier
             .wrapContentHeight()
             .fillMaxWidth(),
-        selectedTimeSpan = QuoteTimeSpan.MONTH
+        selectedSpan = QuoteTimeSpan.MONTH
     )
 }
