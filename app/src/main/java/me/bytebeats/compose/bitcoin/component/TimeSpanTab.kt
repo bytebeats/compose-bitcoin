@@ -8,8 +8,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import me.bytebeats.compose.bitcoin.R
@@ -33,10 +35,24 @@ private val timeSpanMap = mapOf(
 @Composable
 fun TimeSpanTab(
     modifier: Modifier = Modifier,
+    title: String? = null,
     selectedSpan: QuoteTimeSpan = QuoteTimeSpan.MONTH,
     onSpanSelected: ((QuoteTimeSpan) -> Unit)? = null
 ) {
-    Row(modifier = modifier, horizontalArrangement = Arrangement.SpaceAround) {
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.SpaceAround,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+
+        if (!title.isNullOrEmpty()) {
+            Text(
+                text = "$title",
+                style = MaterialTheme.typography.subtitle2,
+                color = MaterialTheme.colors.onBackground,
+            )
+        }
+
         for (entry in timeSpanMap) {
             TimeSpanChip(
                 timeSpan = stringResource(id = entry.key),
@@ -64,8 +80,9 @@ internal fun TimeSpanChip(
     ) {
         Text(
             text = timeSpan,
-            style = MaterialTheme.typography.subtitle1,
+            style = MaterialTheme.typography.h6,
             color = if (isSelected) MaterialTheme.colors.background else MaterialTheme.colors.onBackground,
+            textAlign = TextAlign.Center,
             modifier = Modifier.padding(start = 10.dp, top = 5.dp, end = 10.dp, bottom = 5.dp),
         )
     }

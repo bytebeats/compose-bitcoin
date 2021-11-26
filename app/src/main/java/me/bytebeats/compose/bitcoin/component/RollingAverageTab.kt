@@ -8,8 +8,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import me.bytebeats.compose.bitcoin.R
@@ -26,18 +28,30 @@ private val rollingAverageMap = mapOf(
     R.string.short_4_hours to RollingAverage.FOUR_HOUR,
     R.string.short_8_hours to RollingAverage.EIGHT_HOURS,
     R.string.short_24_hours to RollingAverage.ONE_DAY,
-    R.string.short_2_days to RollingAverage.TWO_DAY,
-    R.string.short_3_days to RollingAverage.THREE_DAY,
     R.string.short_1_week to RollingAverage.ONE_WEAK,
+    R.string.short_4_months to RollingAverage.FOUR_WEEKS,
 )
 
 @Composable
 fun RollingAverageTab(
     modifier: Modifier = Modifier,
+    title: String? = null,
     selectedSpan: RollingAverage = RollingAverage.EIGHT_HOURS,
     onSpanSelected: ((RollingAverage) -> Unit)? = null
 ) {
-    Row(modifier = modifier, horizontalArrangement = Arrangement.SpaceAround) {
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.SpaceAround,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+
+        if (!title.isNullOrEmpty()) {
+            Text(
+                text = "$title",
+                style = MaterialTheme.typography.subtitle2,
+                color = MaterialTheme.colors.onBackground,
+            )
+        }
         for (entry in rollingAverageMap) {
             RollingAverageChip(
                 rollingAverage = stringResource(id = entry.key),
@@ -65,8 +79,9 @@ internal fun RollingAverageChip(
     ) {
         Text(
             text = rollingAverage,
-            style = MaterialTheme.typography.subtitle1,
+            style = MaterialTheme.typography.h6,
             color = if (isSelected) MaterialTheme.colors.background else MaterialTheme.colors.onBackground,
+            textAlign = TextAlign.Center,
             modifier = Modifier.padding(start = 10.dp, top = 5.dp, end = 10.dp, bottom = 5.dp),
         )
     }

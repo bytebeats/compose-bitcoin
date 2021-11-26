@@ -43,14 +43,18 @@ fun StatsScreen(navController: NavController? = null) {
             title = {
                 Text(
                     text = stringResource(id = R.string.popular_stats),
-                    style = MaterialTheme.typography.h5,
+                    style = MaterialTheme.typography.h4,
                     color = MaterialTheme.colors.onPrimary
                 )
             },
             backgroundColor = MaterialTheme.colors.primary,
             navigationIcon = {
-                IconButton(onClick = { navController?.navigate(BitcoinRoute.Quote.value) }) {
-                    Icon(Icons.Default.ArrowBack, contentDescription = "home_arrow_back")
+                IconButton(onClick = { navController?.navigate(BitcoinRoute.Quote.value) }, modifier = Modifier.padding(0.dp)) {
+                    Icon(
+                        Icons.Default.ArrowBack,
+                        contentDescription = "home_arrow_back",
+                        modifier = Modifier.padding(0.dp),
+                    )
                 }
             }
         )
@@ -92,6 +96,7 @@ private fun StatsContentScreen(statsViewModel: StatsViewModel = hiltViewModel())
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(start = 15.dp, top = 15.dp, end = 15.dp),
+                            title = "Time span",
                             selectedSpan = state.statsDetail.timeSpan
                         ) { span ->
                             statsViewModel.fetchStatsDetail(
@@ -103,6 +108,7 @@ private fun StatsContentScreen(statsViewModel: StatsViewModel = hiltViewModel())
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(start = 15.dp, top = 15.dp, end = 15.dp),
+                            title = "Rolling avg",
                             selectedSpan = state.statsDetail.rollingAverage
                         ) { span ->
                             statsViewModel.fetchStatsDetail(

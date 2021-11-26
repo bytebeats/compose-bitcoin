@@ -28,4 +28,5 @@
     <string name="short_2_days">2D</string>
     <string name="short_3_days">3D</string>
     <string name="short_1_week">1W</string>
+    <string name="short_4_months">4M</string>
 </resources>
