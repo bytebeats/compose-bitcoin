@@ -2,7 +2,7 @@ package me.bytebeats.compose.bitcoin.model
 
 import com.github.mikephil.charting.data.Entry
 import me.bytebeats.compose.bitcoin.enums.QuoteTimeSpan
-import me.bytebeats.compose.bitcoin.enums.RollingAverageSpan
+import me.bytebeats.compose.bitcoin.enums.RollingAverage
 
 /**
  * Created by bytebeats on 2021/11/24 : 20:56
@@ -16,7 +16,7 @@ data class StatsDetail(
     val description: String,
     val maxTransaction: Double,
     val timeSpan: QuoteTimeSpan,
-    val rollingAverageSpan: RollingAverageSpan,
+    val rollingAverage: RollingAverage,
     val transactionsEntries: List<Entry>,
 ) {
     val stats: Stats get() = Stats(title, unit, period, description)
@@ -25,7 +25,7 @@ data class StatsDetail(
         get() = Detail(
             maxTransaction,
             timeSpan,
-            rollingAverageSpan,
+            rollingAverage,
             transactionsEntries
         )
 
@@ -39,7 +39,7 @@ data class StatsDetail(
     data class Detail(
         val maxTransaction: Double,
         val timeSpan: QuoteTimeSpan,
-        val rollingAverageSpan: RollingAverageSpan,
+        val rollingAverage: RollingAverage,
         val transactionsEntries: List<Entry>,
     )
 }

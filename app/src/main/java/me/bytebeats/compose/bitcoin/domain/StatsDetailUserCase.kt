@@ -1,7 +1,7 @@
 package me.bytebeats.compose.bitcoin.domain
 
 import me.bytebeats.compose.bitcoin.enums.QuoteTimeSpan
-import me.bytebeats.compose.bitcoin.enums.RollingAverageSpan
+import me.bytebeats.compose.bitcoin.enums.RollingAverage
 import me.bytebeats.compose.bitcoin.model.StatsDetail
 
 /**
@@ -12,6 +12,6 @@ import me.bytebeats.compose.bitcoin.model.StatsDetail
 interface StatsDetailUserCase {
     suspend fun statsDetail(
         timeSpan: QuoteTimeSpan,
-        rollingAverage: RollingAverageSpan
+        rollingAverage: RollingAverage
     ): StatsDetail
 }

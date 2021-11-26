@@ -2,7 +2,7 @@ package me.bytebeats.compose.bitcoin.domain.impl
 
 import me.bytebeats.compose.bitcoin.domain.StatsDetailUserCase
 import me.bytebeats.compose.bitcoin.enums.QuoteTimeSpan
-import me.bytebeats.compose.bitcoin.enums.RollingAverageSpan
+import me.bytebeats.compose.bitcoin.enums.RollingAverage
 import me.bytebeats.compose.bitcoin.model.StatsDetail
 import me.bytebeats.compose.bitcoin.repository.StatsRepository
 import me.bytebeats.compose.bitcoin.util.convertToStatsDetail
@@ -17,13 +17,13 @@ class StatsDetailUserCaseImpl @Inject constructor(private val statsRepository: S
     StatsDetailUserCase {
     override suspend fun statsDetail(
         timeSpan: QuoteTimeSpan,
-        rollingAverage: RollingAverageSpan
+        rollingAverage: RollingAverage
     ): StatsDetail = convertToStatsDetail(
         response = statsRepository.transactionsPerSecond(
             timeSpan = timeSpan.value,
             rollingAverage = rollingAverage.value
         ),
         timeSpan = timeSpan,
-        rollingAverageSpan = rollingAverage
+        rollingAverage = rollingAverage
     )
 }

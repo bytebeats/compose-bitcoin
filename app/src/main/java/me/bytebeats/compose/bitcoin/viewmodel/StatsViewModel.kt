@@ -10,7 +10,7 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import me.bytebeats.compose.bitcoin.domain.StatsDetailUserCase
 import me.bytebeats.compose.bitcoin.enums.QuoteTimeSpan
-import me.bytebeats.compose.bitcoin.enums.RollingAverageSpan
+import me.bytebeats.compose.bitcoin.enums.RollingAverage
 import me.bytebeats.compose.bitcoin.network.NetworkState
 import me.bytebeats.compose.bitcoin.util.APP_TAG
 import me.bytebeats.compose.bitcoin.viewstate.StatsViewState
@@ -35,14 +35,14 @@ class StatsViewModel @Inject constructor(
         Log.i(APP_TAG, null, throwable)
     }
 
-    fun fetchStatsDetail(timeSpan: QuoteTimeSpan, rollingAverageSpan: RollingAverageSpan) {
+    fun fetchStatsDetail(timeSpan: QuoteTimeSpan, rollingAverage: RollingAverage) {
         viewModelScope.launch(ceHandler) {
             _networkState.value = NetworkState.Loading
             try {
                 _networkState.value = NetworkState.Success(
                     StatsViewState(
                         statsDetail = statsDetailUserCase.statsDetail(
-                            timeSpan, rollingAverageSpan
+                            timeSpan, rollingAverage
                         )
                     )
                 )

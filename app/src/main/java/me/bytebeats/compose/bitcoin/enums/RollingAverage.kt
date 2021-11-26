@@ -5,7 +5,7 @@ package me.bytebeats.compose.bitcoin.enums
  * E-mail: happychinapc@gmail.com
  * Quote: Peasant. Educated. Worker
  */
-enum class RollingAverageSpan(val value: String) {
+enum class RollingAverage(val value: String) {
     HOUR("1hours"),
     FOUR_HOUR("4hours"),
     EIGHT_HOURS("8hours"),

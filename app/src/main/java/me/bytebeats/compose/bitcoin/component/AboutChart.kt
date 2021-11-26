@@ -20,10 +20,10 @@ import me.bytebeats.compose.bitcoin.ui.theme.ComposeBitcoinTheme
  */
 
 @Composable
-fun AboutChart(modifier: Modifier = Modifier, aboutChart: String) {
+fun AboutChart(modifier: Modifier = Modifier, description: String) {
     Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Text(text = stringResource(id = R.string.about_chart), style = MaterialTheme.typography.h5)
-        Text(text = aboutChart, style = MaterialTheme.typography.subtitle2)
+        Text(text = description, style = MaterialTheme.typography.subtitle2)
     }
 }
 
@@ -32,6 +32,6 @@ fun AboutChart(modifier: Modifier = Modifier, aboutChart: String) {
 @Composable
 private fun AboutChartPreview() {
     ComposeBitcoinTheme {
-        AboutChart(aboutChart = "Average USD market price across major bitcoin exchanges.")
+        AboutChart(description = "Average USD market price across major bitcoin exchanges.")
     }
 }

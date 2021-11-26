@@ -13,7 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import me.bytebeats.compose.bitcoin.R
-import me.bytebeats.compose.bitcoin.enums.RollingAverageSpan
+import me.bytebeats.compose.bitcoin.enums.RollingAverage
 
 /**
  * Created by bytebeats on 2021/11/24 : 15:25
@@ -21,25 +21,25 @@ import me.bytebeats.compose.bitcoin.enums.RollingAverageSpan
  * Quote: Peasant. Educated. Worker
  */
 
-internal val rollingAverageMap = mapOf(
-    R.string.short_1_hour to RollingAverageSpan.HOUR,
-    R.string.short_4_hours to RollingAverageSpan.FOUR_HOUR,
-    R.string.short_8_hours to RollingAverageSpan.EIGHT_HOURS,
-    R.string.short_24_hours to RollingAverageSpan.ONE_DAY,
-    R.string.short_2_days to RollingAverageSpan.TWO_DAY,
-    R.string.short_3_days to RollingAverageSpan.THREE_DAY,
-    R.string.short_1_week to RollingAverageSpan.ONE_WEAK,
+private val rollingAverageMap = mapOf(
+    R.string.short_1_hour to RollingAverage.HOUR,
+    R.string.short_4_hours to RollingAverage.FOUR_HOUR,
+    R.string.short_8_hours to RollingAverage.EIGHT_HOURS,
+    R.string.short_24_hours to RollingAverage.ONE_DAY,
+    R.string.short_2_days to RollingAverage.TWO_DAY,
+    R.string.short_3_days to RollingAverage.THREE_DAY,
+    R.string.short_1_week to RollingAverage.ONE_WEAK,
 )
 
 @Composable
-fun RollingAverageSpanTab(
+fun RollingAverageTab(
     modifier: Modifier = Modifier,
-    selectedSpan: RollingAverageSpan = RollingAverageSpan.EIGHT_HOURS,
-    onTimeSpanSelected: ((RollingAverageSpan) -> Unit)? = null
+    selectedSpan: RollingAverage = RollingAverage.EIGHT_HOURS,
+    onTimeSpanSelected: ((RollingAverage) -> Unit)? = null
 ) {
     Row(modifier = modifier, horizontalArrangement = Arrangement.SpaceAround) {
         for (entry in rollingAverageMap) {
-            RollingAverageSpanChip(
+            RollingAverageChip(
                 rollingAverage = stringResource(id = entry.key),
                 isSelected = selectedSpan == entry.value
             ) {
@@ -50,7 +50,7 @@ fun RollingAverageSpanTab(
 }
 
 @Composable
-internal fun RollingAverageSpanChip(
+internal fun RollingAverageChip(
     rollingAverage: String,
     isSelected: Boolean,
     onTimeSpanSelected: (() -> Unit)? = null
@@ -74,11 +74,11 @@ internal fun RollingAverageSpanChip(
 @Preview(showBackground = true, showSystemUi = true)
 @Preview(showBackground = true, showSystemUi = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-private fun RollingAverageSpanTabPreview() {
-    RollingAverageSpanTab(
+private fun RollingAverageTabPreview() {
+    RollingAverageTab(
         modifier = Modifier
             .wrapContentHeight()
             .fillMaxWidth(),
-        selectedSpan = RollingAverageSpan.EIGHT_HOURS
+        selectedSpan = RollingAverage.EIGHT_HOURS
     )
 }

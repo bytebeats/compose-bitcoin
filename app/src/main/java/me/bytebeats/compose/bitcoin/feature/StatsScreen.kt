@@ -21,11 +21,12 @@ import androidx.navigation.NavController
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import me.bytebeats.compose.bitcoin.R
-import me.bytebeats.compose.bitcoin.component.RollingAverageSpanTab
+import me.bytebeats.compose.bitcoin.component.AboutChart
+import me.bytebeats.compose.bitcoin.component.RollingAverageTab
 import me.bytebeats.compose.bitcoin.component.StatsChart
 import me.bytebeats.compose.bitcoin.component.TimeSpanTab
 import me.bytebeats.compose.bitcoin.enums.QuoteTimeSpan
-import me.bytebeats.compose.bitcoin.enums.RollingAverageSpan
+import me.bytebeats.compose.bitcoin.enums.RollingAverage
 import me.bytebeats.compose.bitcoin.navigation.BitcoinRoute
 import me.bytebeats.compose.bitcoin.network.NetworkState
 import me.bytebeats.compose.bitcoin.viewmodel.StatsViewModel
@@ -73,7 +74,7 @@ private fun StatsContentScreen(statsViewModel: StatsViewModel = hiltViewModel())
         }
         is NetworkState.Error -> {
             ErrorScreen(errorViewState = ErrorViewState((uiState as NetworkState.Error).error)) {
-                statsViewModel.fetchStatsDetail(QuoteTimeSpan.MONTH, RollingAverageSpan.EIGHT_HOURS)
+                statsViewModel.fetchStatsDetail(QuoteTimeSpan.MONTH, RollingAverage.EIGHT_HOURS)
             }
         }
         is NetworkState.Success -> {
@@ -84,7 +85,7 @@ private fun StatsContentScreen(statsViewModel: StatsViewModel = hiltViewModel())
                     onRefresh = {
                         statsViewModel.fetchStatsDetail(
                             state.statsDetail.timeSpan,
-                            state.statsDetail.rollingAverageSpan,
+                            state.statsDetail.rollingAverage,
                         )
                     },
                     modifier = Modifier.fillMaxSize(),
@@ -98,14 +99,14 @@ private fun StatsContentScreen(statsViewModel: StatsViewModel = hiltViewModel())
                         ) { timeSpan ->
                             statsViewModel.fetchStatsDetail(
                                 timeSpan,
-                                state.statsDetail.rollingAverageSpan,
+                                state.statsDetail.rollingAverage,
                             )
                         }
-                        RollingAverageSpanTab(
+                        RollingAverageTab(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(start = 15.dp, top = 15.dp, end = 15.dp),
-                            selectedSpan = state.statsDetail.rollingAverageSpan
+                            selectedSpan = state.statsDetail.rollingAverage
                         ) { span ->
                             statsViewModel.fetchStatsDetail(
                                 state.statsDetail.timeSpan,
@@ -120,6 +121,12 @@ private fun StatsContentScreen(statsViewModel: StatsViewModel = hiltViewModel())
                                 LocalContext.current
                             ),
                         )
+                        AboutChart(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 15.dp, top = 20.dp, end = 15.dp),
+                            description = state.statsDetail.description
+                        )
                     }
                 }
             }
@@ -131,7 +138,7 @@ private fun StatsContentScreen(statsViewModel: StatsViewModel = hiltViewModel())
         block = {
             statsViewModel.fetchStatsDetail(
                 QuoteTimeSpan.MONTH,
-                RollingAverageSpan.EIGHT_HOURS
+                RollingAverage.EIGHT_HOURS
             )
         })
 }

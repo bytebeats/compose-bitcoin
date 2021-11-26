@@ -106,7 +106,7 @@ private fun QuoteContentScreen(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(start = 15.dp, top = 20.dp, end = 15.dp),
-                            aboutChart = state.quoteDetail.aboutChart
+                            description = state.quoteDetail.aboutChart
                         )
                     }
                 }

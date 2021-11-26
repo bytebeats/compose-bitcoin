@@ -21,7 +21,7 @@ import me.bytebeats.compose.bitcoin.enums.QuoteTimeSpan
  * Quote: Peasant. Educated. Worker
  */
 
-internal val timeSpanMap = mapOf(
+private val timeSpanMap = mapOf(
     R.string.short_one_day to QuoteTimeSpan.DAY,
     R.string.short_seven_days to QuoteTimeSpan.WEEK,
     R.string.short_thirty_days to QuoteTimeSpan.MONTH,
