@@ -134,7 +134,7 @@ fun QuoteScreen(navController: NavController? = null) {
             actions = {
                 TextButton(onClick = { navController?.navigate(BitcoinRoute.Stats.value) }) {
                     Text(
-                        text = stringResource(id = R.string.popular_stats),
+                        text = stringResource(id = R.string.stats),
                         style = MaterialTheme.typography.h6,
                         color = MaterialTheme.colors.onPrimary
                     )

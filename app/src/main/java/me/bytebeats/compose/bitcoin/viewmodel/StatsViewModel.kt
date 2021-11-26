@@ -47,7 +47,6 @@ class StatsViewModel @Inject constructor(
                     )
                 )
             } catch (e: Exception) {
-                Log.i(APP_TAG, e.stackTraceToString())
                 _networkState.value = NetworkState.Error(e)
             }
         }

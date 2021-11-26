@@ -20,7 +20,7 @@ import com.github.mikephil.charting.data.LineDataSet
  */
 
 @Composable
-fun StartsChart(modifier: Modifier = Modifier, lineDataSet: LineDataSet? = null) {
+fun StatsChart(modifier: Modifier = Modifier, lineDataSet: LineDataSet? = null) {
     Column {
         CurrencyStats()
         TransactionsChart(modifier = modifier, lineDataSet = lineDataSet)

@@ -21,8 +21,8 @@ import androidx.navigation.NavController
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import me.bytebeats.compose.bitcoin.R
-import me.bytebeats.compose.bitcoin.component.Chart
-import me.bytebeats.compose.bitcoin.component.CurrencyStats
+import me.bytebeats.compose.bitcoin.component.RollingAverageSpanTab
+import me.bytebeats.compose.bitcoin.component.StatsChart
 import me.bytebeats.compose.bitcoin.component.TimeSpanTab
 import me.bytebeats.compose.bitcoin.enums.QuoteTimeSpan
 import me.bytebeats.compose.bitcoin.enums.RollingAverageSpan
@@ -44,7 +44,7 @@ fun StatsScreen(navController: NavController? = null) {
         TopAppBar(
             title = {
                 Text(
-                    text = stringResource(id = R.string.stats),
+                    text = stringResource(id = R.string.popular_stats),
                     style = MaterialTheme.typography.h5,
                     color = MaterialTheme.colors.onPrimary
                 )
@@ -84,13 +84,12 @@ private fun StatsContentScreen(statsViewModel: StatsViewModel = hiltViewModel())
                     onRefresh = {
                         statsViewModel.fetchStatsDetail(
                             state.statsDetail.timeSpan,
-                            RollingAverageSpan.EIGHT_HOURS
+                            state.statsDetail.rollingAverageSpan,
                         )
                     },
                     modifier = Modifier.fillMaxSize(),
                 ) {
                     Column(modifier = Modifier.verticalScroll(scrollState)) {
-                        CurrencyStats()
                         TimeSpanTab(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -99,10 +98,21 @@ private fun StatsContentScreen(statsViewModel: StatsViewModel = hiltViewModel())
                         ) { timeSpan ->
                             statsViewModel.fetchStatsDetail(
                                 timeSpan,
-                                RollingAverageSpan.EIGHT_HOURS
+                                state.statsDetail.rollingAverageSpan,
                             )
                         }
-                        Chart(
+                        RollingAverageSpanTab(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 15.dp, top = 15.dp, end = 15.dp),
+                            selectedSpan = state.statsDetail.rollingAverageSpan
+                        ) { span ->
+                            statsViewModel.fetchStatsDetail(
+                                state.statsDetail.timeSpan,
+                                span,
+                            )
+                        }
+                        StatsChart(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(start = 5.dp, top = 10.dp, end = 5.dp),

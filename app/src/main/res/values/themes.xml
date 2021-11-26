@@ -1,40 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.Composebitcoin" parent="android:Theme.Material.Light.NoActionBar">
-<!--    <style name="Theme.Composebitcoin" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">-->
-        <!-- Primary brand color. -->
-        <item name="android:colorPrimary">@color/black</item>
-<!--        <item name="colorPrimaryVariant">@color/black</item>-->
-<!--        <item name="colorOnPrimary">@color/white</item>-->
-        <!-- Secondary brand color. -->
-<!--        <item name="colorSecondary">@color/teal_200</item>-->
-<!--        <item name="colorSecondaryVariant">@color/teal_700</item>-->
-<!--        <item name="colorOnSecondary">@color/black</item>-->
-        <!-- Surface -->
-<!--        <item name="colorSurface">@color/white</item>-->
-<!--        <item name="colorOnSurface">@color/gray_950</item>-->
-        <!-- background -->
-<!--        <item name="backgroundColor">@color/white</item>-->
-<!--        <item name="colorOnBackground">@color/black</item>-->
-
-        <!-- Status bar color. -->
-<!--        <item name="android:statusBarColor" tools:targetApi="l">@android:color/transparent</item>-->
-        <!-- Customize your theme here. -->
-
-        <!--Typography-->
-<!--        <item name="textAppearanceHeadline2">@style/TextAppearance.Headline2</item>-->
-<!--        <item name="textAppearanceHeadline3">@style/TextAppearance.Headline3</item>-->
-<!--        <item name="textAppearanceHeadline4">@style/TextAppearance.Headline4</item>-->
-<!--        <item name="textAppearanceHeadline5">@style/TextAppearance.Headline5</item>-->
-<!--        <item name="textAppearanceHeadline6">@style/TextAppearance.Headline6</item>-->
-<!--        <item name="textAppearanceSubtitle1">@style/TextAppearance.Subtitle1</item>-->
-<!--        <item name="textAppearanceSubtitle2">@style/TextAppearance.Subtitle2</item>-->
-<!--        <item name="textAppearanceBody1">@style/TextAppearance.Body1</item>-->
-<!--        <item name="textAppearanceBody2">@style/TextAppearance.Body2</item>-->
-<!--        <item name="textAppearanceButton">@style/TextAppearance.Button</item>-->
-<!--        <item name="textAppearanceCaption">@style/TextAppearance.Caption</item>-->
-<!--        <item name="textAppearanceOverline">@style/TextAppearance.Overline</item>-->
-
+    <style name="Theme.ComposeBitcoin" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/purple_700</item>
     </style>
 </resources>
