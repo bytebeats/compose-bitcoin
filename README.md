@@ -16,10 +16,6 @@ Android Bitcoin market app base on Jetpack Compose and MVVM & MVI.
 
 ## Features
 
-<img src="/arts/compose_bitcoin.gif" width="220" height="480"/>
-
-## Features
-
 * Current bitcoin market price.
 * K-line charts of history prices.
 * Popular stats for blockchain.
