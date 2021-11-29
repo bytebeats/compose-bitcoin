@@ -1,5 +1,18 @@
 # compose-bitcoin
+
+[![GitHub latest commit](https://badgen.net/github/last-commit/bytebeats/compose-bitcoin)](https://github.com/bytebeats/compose-bitcoin/commit/)
+[![GitHub contributors](https://img.shields.io/github/contributors/bytebeats/compose-bitcoin.svg)](https://github.com/bytebeats/compose-bitcoin/graphs/contributors/)
+[![GitHub issues](https://img.shields.io/github/issues/bytebeats/compose-bitcoin.svg)](https://github.com/bytebeats/compose-bitcoin/issues/)
+[![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/bytebeats/compose-bitcoin/)
+[![GitHub forks](https://img.shields.io/github/forks/bytebeats/compose-bitcoin.svg?style=social&label=Fork&maxAge=2592000)](https://github.com/bytebeats/compose-bitcoin/network/)
+[![GitHub stars](https://img.shields.io/github/stars/bytebeats/compose-bitcoin.svg?style=social&label=Star&maxAge=2592000)](https://github.com/bytebeats/compose-bitcoin/stargazers/)
+[![GitHub watchers](https://img.shields.io/github/watchers/bytebeats/compose-bitcoin.svg?style=social&label=Watch&maxAge=2592000)](https://github.com/bytebeats/compose-bitcoin/watchers/)
+
 Android Bitcoin market app base on Jetpack Compose and MVVM & MVI.
+
+## Graph Effects
+
+<img src="/arts/compose_bitcoin.gif" width="220" height="480"/>
 
 ## Features
 
@@ -19,3 +32,15 @@ Android Bitcoin market app base on Jetpack Compose and MVVM & MVI.
 * [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart) - Powerful Android chart view / graph view library, supporting line- bar- pie- radar- bubble- and candlestick charts as well as scaling, panning and animations.
 * [Lottie](https://github.com/airbnb/lottie-android) -  Mobile library for Android and iOS that parses Adobe After Effects animations exported as json with Bodymovin and renders them natively on mobile!
 * [Truth](https://truth.dev/) & [Mockk](https://mockk.io/) - For more readable unit tests.
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/bytebeats/compose-bitcoin.svg)](https://starchart.cc/bytebeats/compose-bitcoin)
+
+## Github Stars Sparklines
+
+[![Sparkline](https://stars.medv.io/bytebeats/compose-bitcoin.svg)](https://stars.medv.io/bytebeats/compose-bitcoin)
+
+## Contributors
+
+[![Contributors over time](https://contributor-graph-api.apiseven.com/contributors-svg?chart=contributorOverTime&repo=bytebeats/compose-bitcoin)](https://www.apiseven.com/en/contributor-graph?chart=contributorOverTime&repo=bytebeats/compose-bitcoin)
